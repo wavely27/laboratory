@@ -1,0 +1,19 @@
+{
+  "name": "my-react",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "private": true,
+  "author": "hongbai",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack serve --open"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^5.3.1",
+    "webpack": "^5.24.4",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
