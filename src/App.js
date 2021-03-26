@@ -1,74 +1,181 @@
+
+
 // import "./App.css";
+// module
+// import {default as k} from './sum'
+// console.log('k(123)', k(123))
+
+// (function() {
+//   console.log('key', key)
+// })();
+
+// event loop
+// (function () {
+//   async function async1() {
+//     console.log("async1 start");
+//     await async2();
+//     console.log("async1 end");
+//   }
+//   async function async2() {
+//     console.log("async2");
+//   }
+//   console.log("script start");
+//   setTimeout(function () {
+//     console.log("setTimeout");
+//   }, 0);
+//   async1();
+//   new Promise(function (resolve) {
+//     console.log("promise1");
+//     resolve();
+//   }).then(function () {
+//     console.log("promise2");
+//   });
+//   console.log("script end");
+// })();
+
+// 深度优先遍历 递归 children 用stack 循环node.children
+
+// 广度优先遍历 递归 sibling 和 children 循环node.children
+
+// throttle 节气阀 节流
+// (function () {
+//   function callback() {
+//     console.log("tick");
+//   }
+//   const throttleFn = throttle(callback, 1000, true);
+//   let count = 0;
+//   let itv = setInterval(() => {
+//     console.log("throttleFn run");
+//     throttleFn();
+//     count++;
+//     if (count >= 30) {
+//       clearInterval(itv);
+//       itv = null;
+//     }
+//   }, 200);
+//   function throttle(fn, wait, immediately) {
+//     let timer = null;
+//     let begin = immediately
+//     return function (...args) {
+//       if (timer) {
+//         return;
+//       }
+//       timer = setTimeout(function () {
+//         fn.apply(this, args);
+//         clearTimeout(timer);
+//         timer = null;
+//       }, wait);
+//       if (begin) {
+//         begin = false
+//         fn.apply(this, args);
+//       }
+//     };
+//   }
+// })();
+
+// debounce 去盎司 防反跳 防抖 重置定时器
+// (function () {
+//   function callback() {
+//     console.log('tick')
+//   }
+//   const debounceFn = debounce(callback, 1000)
+//   let count = 0
+//   let itv = setInterval(() => {
+//     console.log('debounceFn run')
+//     debounceFn()
+//     count++
+//     if (count >= 30) {
+//       clearInterval(itv)
+//       itv = null
+//     }
+//   }, 2000);
+//   function debounce(fn, wait, options) {
+//     const self = this
+//     // 类型检查
+//     // 闭包缓存定时器
+//     let timer = null
+//     // 定义返回函数
+//     return function () {
+//       if (timer) {
+//         clearTimeout(timer)
+//         timer = null
+//       }
+//       timer = setTimeout(function() {
+//         fn.apply(self, arguments)
+//       }, wait)
+//     }
+//   }
+// })();
 
 // 链表求和
-(function () {
-  // 618 ,312
-  function cell(num) {
-    this.value = num % 10;
-    const temp = Math.floor(num / 10);
-    if (temp) {
-      this.parent = new cell(temp);
-    } else {
-      this.parent = null;
-    }
-    return this;
-  }
+// (function () {
+//   // 433618 ,312
+//   function cell(num) {
+//     this.value = num % 10;
+//     const temp = Math.floor(num / 10);
+//     if (temp) {
+//       this.parent = new cell(temp);
+//     } else {
+//       this.parent = null;
+//     }
+//     return this;
+//   }
 
-  const firstNumber = new cell(433618);
-  const secondNumber = new cell(312);
+//   const firstNumber = new cell(433618);
+//   const secondNumber = new cell(312);
 
-  function sum(a, b) {
-    let result = null;
-    let point = result;
-    let remain = 0;
-    while ((a && a.value) || (b && b.value) || remain) {
-      if (point === null) {
-        point = new cell(0);
-        result = point;
-      } else {
-        point.parent = new cell(0);
-        point = point.parent;
-      }
+//   function sum(a, b) {
+//     let result = null;
+//     let point = result;
+//     let remain = 0;
+//     while ((a && a.value) || (b && b.value) || remain) {
+//       if (point === null) {
+//         point = new cell(0);
+//         result = point;
+//       } else {
+//         point.parent = new cell(0);
+//         point = point.parent;
+//       }
 
-      if (remain) {
-        let temp = remain;
-        if (a && a.value) {
-          temp += a.value;
-        }
-        if (b && b.value) {
-          temp += b.value;
-        }
-        remain = Math.floor(temp / 10);
-        point.value = temp % 10;
-        a = a && a.parent;
-        b = b && b.parent;
-      } else if (a && a.value && b && b.value) {
-        let temp = remain;
-        if (a && a.value) {
-          temp += a.value;
-        }
-        if (b && b.value) {
-          temp += b.value;
-        }
-        remain = Math.floor(temp / 10);
-        point.value = temp % 10;
-        a = a.parent;
-        b = b.parent;
-      } else if (a && a.value) {
-        point.value += a.value;
-        a = a.parent;
-      } else if (b && b.value) {
-        point.value += b.value;
-        b = b.parent;
-      }
-    }
+//       if (remain) {
+//         let temp = remain;
+//         if (a && a.value) {
+//           temp += a.value;
+//         }
+//         if (b && b.value) {
+//           temp += b.value;
+//         }
+//         remain = Math.floor(temp / 10);
+//         point.value = temp % 10;
+//         a = a && a.parent;
+//         b = b && b.parent;
+//       } else if (a && a.value && b && b.value) {
+//         let temp = remain;
+//         if (a && a.value) {
+//           temp += a.value;
+//         }
+//         if (b && b.value) {
+//           temp += b.value;
+//         }
+//         remain = Math.floor(temp / 10);
+//         point.value = temp % 10;
+//         a = a.parent;
+//         b = b.parent;
+//       } else if (a && a.value) {
+//         point.value += a.value;
+//         a = a.parent;
+//       } else if (b && b.value) {
+//         point.value += b.value;
+//         b = b.parent;
+//       }
+//     }
 
-    return result;
-  }
+//     return result;
+//   }
 
-  const result = sum(firstNumber, secondNumber);
-  console.log(result);
-})();
+//   const result = sum(firstNumber, secondNumber);
+//   console.log(result);
+// })();
 
 // 二维寻路
 // (function () {
